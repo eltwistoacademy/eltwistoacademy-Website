@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>eltwistoacademy — Redesign-Vorschau</title>
+<title>eltwistoacademy — Akrobatik Kurse in Teltow &amp; Berlin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -44,7 +44,7 @@
     width:100%; max-width:1240px; margin:0 auto;
     background:var(--paper);
   }
-  .site section, .site header, .site .nav, .class-card{ scroll-margin-top:74px; }
+  .site section, .site header, .site .nav, .class-card, .loc-card{ scroll-margin-top:74px; }
 
   /* ===================== NAV ===================== */
   .nav{
@@ -391,8 +391,8 @@
         <div class="mobile-menu" id="mmenu">
           <a href="#top">Startseite</a>
           <a href="#kurse">Kurse</a>
-          <a class="sub" href="#standorte">↳ Teltow</a>
-          <a class="sub" href="#standorte">↳ Berlin</a>
+          <a class="sub" href="#teltow">↳ Teltow</a>
+          <a class="sub" href="#berlin">↳ Berlin</a>
           <a href="#einzeltraining">Einzeltraining</a>
           <a href="#kontakt">Kontakt</a>
         </div>
@@ -552,7 +552,7 @@
             <h2 class="reveal">Teltow &amp; Berlin</h2>
           </div>
           <div class="loc-grid">
-            <div class="loc-card reveal">
+            <div class="loc-card reveal" id="teltow">
               <div class="loc-map">
                 <iframe src="https://www.google.com/maps?q=Iserstra%C3%9Fe%208-10%2C%2014513%20Teltow&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Karte: Teltow, Iserstraße 8-10"></iframe>
               </div>
@@ -563,7 +563,7 @@
                 <a href="#kurse">Preise &amp; Zeiten ansehen →</a>
               </div>
             </div>
-            <div class="loc-card reveal">
+            <div class="loc-card reveal" id="berlin">
               <div class="loc-map">
                 <iframe src="https://www.google.com/maps?q=Inselsportclub%2C%20Motzener%20Stra%C3%9Fe%205%2C%2012277%20Berlin&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Karte: Berlin, Motzener Straße 5"></iframe>
               </div>
