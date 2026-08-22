@@ -26,9 +26,10 @@
     --shadow: 0 1px 2px rgba(23,33,59,0.06), 0 8px 24px rgba(23,33,59,0.08);
   }
   *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
   html,body{margin:0;padding:0;}
   body{
-    background:#DDE0DA;
+    background:var(--paper);
     font-family:'Inter',sans-serif;
     color:var(--ink);
     -webkit-font-smoothing:antialiased;
@@ -37,63 +38,12 @@
   img{max-width:100%;display:block;}
   button{font-family:inherit;cursor:pointer;}
 
-  /* ===== Demo chrome (toolbar) — not part of the real site ===== */
-  .demo-toolbar{
-    position:sticky; top:0; z-index:100;
-    display:flex; align-items:center; justify-content:center; gap:10px;
-    flex-wrap:wrap;
-    padding:14px 16px;
-    background:#14192A;
-    color:#EAEAE6;
-    font-family:'Space Mono',monospace;
-    font-size:12px;
-  }
-  .demo-toolbar .label{opacity:.55; letter-spacing:.04em; text-transform:uppercase; font-size:11px;}
-  .device-btns{display:flex; gap:6px; background:#1F273D; padding:4px; border-radius:10px;}
-  .device-btns button{
-    border:none; background:transparent; color:#B7BBC9;
-    padding:7px 12px; border-radius:7px; font-family:inherit; font-size:12px;
-    display:flex; align-items:center; gap:6px; transition:.15s;
-  }
-  .device-btns button.active{background:var(--flip); color:#fff;}
-  .device-btns button:not(.active):hover{background:#2A3350; color:#fff;}
-
-  /* ===== Preview stage ===== */
-  .preview-stage{
-    display:flex; justify-content:center;
-    padding:40px 16px 64px;
-  }
-  .device-shell{
-    width:100%; max-width:1240px;
-    background:var(--paper);
-    border-radius:0px;
-    box-shadow:var(--shadow);
-    overflow:hidden;
-    transition:width .35s ease, border-radius .35s ease;
-  }
-  .device-shell.tablet{
-    width:768px; max-height:820px; overflow-y:auto; border-radius:22px;
-    box-shadow: 0 0 0 10px #14192A, 0 20px 60px rgba(0,0,0,.35);
-    scroll-behavior:smooth;
-  }
-  .device-shell.mobile{
-    width:390px; max-height:800px; overflow-y:auto; border-radius:40px;
-    box-shadow: 0 0 0 12px #14192A, 0 20px 60px rgba(0,0,0,.4);
-    position:relative;
-    scrollbar-width:none;
-    scroll-behavior:smooth;
-  }
-  .device-shell.mobile::-webkit-scrollbar{display:none;}
-  .device-notch{
-    display:none;
-    position:sticky; top:0; z-index:50;
-    width:120px; height:26px; background:#14192A;
-    border-radius:0 0 16px 16px; margin:0 auto;
-  }
-  .device-shell.mobile .device-notch{display:block;}
-
   /* ===== container-query root ===== */
-  .site{ container: site / inline-size; width:100%; scroll-behavior:smooth; }
+  .site{
+    container: site / inline-size;
+    width:100%; max-width:1240px; margin:0 auto;
+    background:var(--paper);
+  }
   .site section, .site header, .site .nav, .class-card{ scroll-margin-top:74px; }
 
   /* ===================== NAV ===================== */
@@ -423,19 +373,7 @@
 </head>
 <body>
 
-  <div class="demo-toolbar">
-    <span class="label">Vorschau</span>
-    <div class="device-btns">
-      <button data-device="mobile" class="active" onclick="setDevice('mobile',this)">📱 Mobile</button>
-      <button data-device="tablet" onclick="setDevice('tablet',this)">📟 Tablet</button>
-      <button data-device="desktop" onclick="setDevice('desktop',this)">🖥️ Desktop</button>
-    </div>
-  </div>
-
-  <div class="preview-stage">
-    <div class="device-shell mobile" id="deviceShell">
-      <div class="device-notch"></div>
-      <div class="site" id="site">
+  <div class="site" id="site">
 
         <!-- ===== NAV ===== -->
         <nav class="nav" id="top">
@@ -763,19 +701,9 @@
           <div class="copy">© 2026 eltwistoacademy</div>
         </footer>
 
-      </div>
-    </div>
   </div>
 
 <script>
-  function setDevice(mode, btn){
-    document.querySelectorAll('.device-btns button').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    const shell = document.getElementById('deviceShell');
-    shell.classList.remove('mobile','tablet','desktop');
-    shell.classList.add(mode);
-  }
-
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, {threshold:0.12});
