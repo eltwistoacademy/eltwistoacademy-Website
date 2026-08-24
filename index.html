@@ -378,7 +378,9 @@
   }
   .consent-check input{margin-top:3px; flex-shrink:0; width:16px; height:16px; accent-color:var(--flip);}
   .consent-check span{font-size:12.5px; line-height:1.55; color:var(--ink-soft);}
-  .form-hint{font-size:11.5px; color:var(--ink-soft); margin:0 0 18px;}
+  .form-hint{font-size:11.5px; line-height:1.6; color:var(--ink-soft); margin:0 0 18px;}
+  /* Spamfalle aus dem Blickfeld nehmen, ohne display:none (das erkennen manche Bots). */
+  .hp-wrap{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;}
   .form-submit{width:100%; justify-content:center;}
   .form-fallback{
     margin-top:16px; padding:16px; border-radius:12px;
@@ -734,14 +736,23 @@
               <textarea id="cf-message" name="message" rows="4"></textarea>
             </div>
             <label class="consent-check">
-              <input type="checkbox" id="cf-consent" name="consent" required>
+              <input type="checkbox" id="cf-consent" name="consent" value="Ja, erteilt am Tag der Anfrage" required>
               <span>Ich bin damit einverstanden, dass diese Daten zum Zweck der Kontaktaufnahme gespeichert und verarbeitet werden. Mir ist bekannt, dass ich meine Einwilligung jederzeit widerrufen kann. *</span>
             </label>
-            <p class="form-hint">* Bitte alle erforderlichen Felder ausfüllen.</p>
+            <!-- Betreff der Mail; wird beim Absenden mit dem Namen gefuellt -->
+            <input type="hidden" name="subject" id="cf-subject" value="Kontaktanfrage über die Website">
+            <!-- Spamfalle: fuer Menschen unsichtbar, Bots fuellen sie aus.
+                 Der Unterstrich sorgt dafuer, dass SimplyForms das Feld nicht in die Mail schreibt. -->
+            <div class="hp-wrap" aria-hidden="true">
+              <label for="cf-hp">Dieses Feld bitte frei lassen</label>
+              <input type="text" id="cf-hp" name="_hp" tabindex="-1" autocomplete="off">
+            </div>
+            <p class="form-hint">* Bitte alle erforderlichen Felder ausfüllen.<br>
+              Bist du unter 16, lass die Anfrage bitte von einem Elternteil schicken.</p>
             <button type="submit" class="btn btn-primary form-submit">Nachricht senden</button>
             <p class="form-status" id="formStatus" aria-live="polite"></p>
             <div class="form-fallback" id="formFallback" hidden>
-              <p>Hat sich kein E-Mail-Programm geöffnet? Dann schick mir deine Nachricht direkt:</p>
+              <p>Klappt das Senden gerade nicht? Dann erreichst du mich direkt hier:</p>
               <p><a href="mailto:eltwisto.marco@gmail.com">eltwisto.marco@gmail.com</a> · <a href="tel:+4917847259588">0178 47259588</a></p>
               <button type="button" class="btn btn-ghost form-copy" id="formCopy">Nachricht kopieren</button>
             </div>
@@ -767,11 +778,13 @@
               <p>Beim Besuch dieser Website werden automatisch Informationen durch den Hosting-Provider erfasst (z. B. IP-Adresse, Browsertyp, Betriebssystem, Uhrzeit des Zugriffs). Diese Daten dienen ausschließlich der technischen Sicherheit und Verbesserung der Website.</p>
 
               <h3>4. Kontaktaufnahme</h3>
-              <p>Das Kontaktformular auf dieser Website speichert keine Daten auf einem Server und sendet auch nichts an einen Formulardienst. Beim Klick auf „Senden" öffnet sich dein eigenes E-Mail-Programm mit einer vorbereiteten Nachricht, die du selbst abschickst. Deine Anfrage erreicht mich also als ganz normale E-Mail.</p>
-              <p>Diese E-Mails werden bei meinem E-Mail-Anbieter Google Ireland Limited (Gmail) gespeichert und von mir ausschließlich zur Bearbeitung deiner Anfrage verarbeitet (Art. 6 Abs. 1 lit. a und lit. b DSGVO). Ich gebe diese Daten nicht ohne deine Einwilligung weiter und lösche sie, sobald sie nicht mehr benötigt werden.</p>
+              <p>Wenn du das Kontaktformular nutzt, werden die von dir eingegebenen Daten — Name, E-Mail-Adresse und deine Nachricht — an mich übermittelt und ausschließlich zur Bearbeitung deiner Anfrage verwendet. Rechtsgrundlage sind deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) sowie die Anbahnung eines Vertragsverhältnisses (Art. 6 Abs. 1 lit. b DSGVO).</p>
+              <p>Für die Übermittlung setze ich den Dienst SimplyForms ein, betrieben von Adam Todt, Drahy 1625, 696 42 Vracov, Tschechische Republik (IČO 19197438). Der Dienst nimmt deine Formulardaten entgegen und leitet sie mir per E-Mail weiter. Die Verarbeitung findet ausschließlich auf Servern innerhalb der Europäischen Union statt (Hetzner Online GmbH, Nürnberg). Die Inhalte deines Formulars werden dabei nicht in einer Datenbank gespeichert, sondern nach der Zustellung verworfen. Mit dem Anbieter besteht ein Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO.</p>
+              <p>Du kannst mir stattdessen auch direkt per E-Mail oder telefonisch schreiben. In jedem Fall erreicht mich deine Nachricht als E-Mail. Diese wird bei meinem E-Mail-Anbieter Google Ireland Limited (Gmail) gespeichert und von mir ausschließlich zur Bearbeitung deiner Anfrage verarbeitet. Ich gebe diese Daten nicht ohne deine Einwilligung weiter und lösche sie, sobald sie nicht mehr benötigt werden.</p>
+              <p>Bist du unter 16 Jahre alt, schick deine Anfrage bitte über eine erziehungsberechtigte Person (Art. 8 DSGVO).</p>
 
               <h3>5. Cookies und Tracking</h3>
-              <p>Diese Website setzt keine Cookies und bindet keine Analyse-, Werbe- oder Tracking-Dienste ein. Dein Surfverhalten wird nicht ausgewertet und es werden keine Profile gebildet.</p>
+              <p>Diese Website selbst setzt keine Cookies und bindet keine Analyse-, Werbe- oder Tracking-Dienste ein. Dein Surfverhalten wird von mir nicht ausgewertet und es werden keine Profile gebildet. Beim Laden der eingebundenen Karten kann Google eigene Cookies setzen — siehe Punkt 8.</p>
 
               <h3>6. Hosting</h3>
               <p>Diese Website wird über GitHub Pages bereitgestellt, einen Dienst der GitHub Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, USA. Beim Aufruf der Seite überträgt dein Browser technisch notwendige Daten an GitHub — unter anderem IP-Adresse, Browsertyp, Betriebssystem und Zeitpunkt des Zugriffs. Diese werden dort in Server-Logfiles verarbeitet.</p>
@@ -862,9 +875,9 @@
     }
   });
 
-  // Trag hier die URL eines Formulardienstes ein (z. B. Formspree oder Web3Forms),
-  // dann wird das Formular direkt verschickt statt das E-Mail-Programm zu oeffnen.
-  const FORM_ENDPOINT = '';
+  // SimplyForms nimmt die Anfrage entgegen und leitet sie per Mail weiter.
+  // Der Dienst speichert nichts; leer lassen faellt auf das E-Mail-Programm zurueck.
+  const FORM_ENDPOINT = 'https://api.simplyforms.app/v1/forms/rZ1_KMinTYGx7huMgvStYA';
 
   const cf = document.getElementById('contactForm');
   if(cf){
@@ -879,6 +892,18 @@
       const email   = document.getElementById('cf-email').value.trim();
       const message = document.getElementById('cf-message').value.trim();
       lastText = 'Name: ' + name + '\nE-Mail: ' + email + '\n\nNachricht:\n' + message;
+
+      // Spamfalle: ausgefuellt heisst Bot. Nichts senden, aber auch nichts verraten.
+      const hp = document.getElementById('cf-hp');
+      if(hp && hp.value){
+        cf.reset();
+        status.textContent = 'Danke! Deine Nachricht ist angekommen — ich melde mich zeitnah.';
+        return;
+      }
+
+      // Betreff, damit die Mail zuordenbar im Postfach liegt
+      const subj = document.getElementById('cf-subject');
+      if(subj) subj.value = name ? ('Kontaktanfrage von ' + name) : 'Kontaktanfrage über die Website';
 
       if(FORM_ENDPOINT){
         status.textContent = 'Wird gesendet …';
