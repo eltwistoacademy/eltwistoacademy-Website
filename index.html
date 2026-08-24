@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Akrobatik-Kurse und Personal Training für Kinder &amp; Jugendliche in Teltow und Berlin. Anfänger und Fortgeschrittene, Alter 6–16. Gruppen- und Einzeltraining.">
+<meta name="description" content="Akrobatik-Kurse für Kinder &amp; Jugendliche in Teltow und Berlin — erstes Training kostenlos. Anfänger und Fortgeschrittene, Alter 6–16. Gruppen- und Einzeltraining.">
 
 <!-- Vorschaukarte beim Teilen (WhatsApp, Instagram, Facebook, LinkedIn ...).
      Die URLs müssen absolut sein - relative Pfade werden von den Scrapern ignoriert. -->
@@ -12,7 +12,7 @@
 <meta property="og:locale" content="de_DE">
 <meta property="og:url" content="https://www.eltwistoacademy.de/">
 <meta property="og:title" content="eltwistoacademy — Akrobatik Kurse in Teltow &amp; Berlin">
-<meta property="og:description" content="Akrobatik-Kurse und Personal Training für Kinder &amp; Jugendliche in Teltow und Berlin. Anfänger und Fortgeschrittene, Alter 6–16. Gruppen- und Einzeltraining.">
+<meta property="og:description" content="Akrobatik-Kurse für Kinder &amp; Jugendliche in Teltow und Berlin — erstes Training kostenlos. Anfänger und Fortgeschrittene, Alter 6–16. Gruppen- und Einzeltraining.">
 <meta property="og:image" content="https://www.eltwistoacademy.de/assets/share.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -184,6 +184,8 @@
     box-shadow:var(--shadow); margin-bottom:22px;
   }
   .pill .dot{width:6px;height:6px;border-radius:50%; background:var(--flip);}
+  /* Einstiegsangebot im Hero hervorheben */
+  .pill-offer{background:var(--yellow-tint); border-color:rgba(122,90,0,0.22); color:var(--yellow-ink);}
   .eyebrow{
     font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.06em;
     text-transform:uppercase; color:var(--flip); font-weight:700; margin:0 0 12px;
@@ -256,6 +258,13 @@
   .schedule .eyebrow{color:var(--yellow);}
   .schedule h2{color:#fff;}
   .schedule-sub{color:rgba(243,244,238,.6); font-size:14.5px; margin-top:10px; max-width:50ch;}
+  .schedule-pause{
+    display:inline-flex; align-items:center; gap:8px; margin:14px 0 0;
+    font-size:13px; font-weight:600; color:rgba(243,244,238,.75);
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);
+    padding:7px 13px; border-radius:99px;
+  }
+  .schedule-pause .dot{width:6px; height:6px; border-radius:50%; background:var(--yellow); flex-shrink:0;}
   .tag{
     font-size:11px; font-weight:700; padding:5px 10px; border-radius:99px;
     white-space:nowrap; text-transform:uppercase; letter-spacing:.03em;
@@ -297,6 +306,8 @@
   }
   .price-row span{color:rgba(243,244,238,.65);}
   .price-row b{font-family:'Space Mono',monospace; font-size:15px; color:#fff;}
+  .price-row-trial span{color:rgba(243,244,238,.9); font-weight:600;}
+  .price-row-trial b{color:var(--yellow);}
   .class-card .btn{width:100%; justify-content:center;}
   .class-note{font-size:11px; color:rgba(243,244,238,.55); margin:12px 0 0; text-align:center;}
 
@@ -516,15 +527,15 @@
         <!-- ===== HERO ===== -->
         <header class="hero">
           <div class="hero-inner">
-            <div class="pill reveal"><span class="dot"></span> Kurspause: 22.09. – 08.10.2026</div>
+            <div class="pill pill-offer reveal"><span class="dot"></span> Erstes Training kostenlos</div>
             <p class="eyebrow reveal">Akrobatik · Teltow &amp; Berlin</p>
             <h1 class="reveal">Kopfüber<br><em>wachsen.</em></h1>
             <p class="hero-sub reveal">Akrobatik Kurse und Personal Training für Kinder &amp; Jugendliche.</p>
             <div class="cta-row reveal">
-              <a class="btn btn-primary" href="#kurse">Kurse ansehen</a>
-              <a class="btn btn-ghost" href="#kontakt">Kontakt aufnehmen</a>
+              <a class="btn btn-primary" href="#kontakt">Probetraining anfragen</a>
+              <a class="btn btn-ghost" href="#kurse">Kurse &amp; Zeiten ansehen</a>
             </div>
-            <p class="trust-line reveal">Für Anfänger &amp; Fortgeschrittene · Alter 6–16</p>
+            <p class="trust-line reveal">Unverbindlich ausprobieren · Für Anfänger &amp; Fortgeschrittene · Alter 6–16</p>
           </div>
         </header>
 
@@ -583,7 +594,8 @@
           <div class="section-head">
             <p class="eyebrow reveal">Kurse &amp; Preise</p>
             <h2 class="reveal">Drei Kurse, ein Ziel.</h2>
-            <p class="schedule-sub reveal">Feste Wochentermine in Teltow &amp; Berlin — einzeln buchbar oder als 5er-/10er-Karte.</p>
+            <p class="schedule-sub reveal">Feste Wochentermine in Teltow &amp; Berlin — einzeln buchbar oder als 5er-/10er-Karte. Das erste Training ist kostenlos.</p>
+            <p class="schedule-pause reveal"><span class="dot"></span> Kurspause: 22.09. – 08.10.2026</p>
           </div>
 
           <div class="class-grid">
@@ -601,11 +613,12 @@
               </div>
               <p class="class-desc">Das Training ist spielerisch aufgebaut und vermittelt altersgerecht erste akrobatische Grundlagen. Durch abwechslungsreiche Übungen, kleine Spiele und kreative Bewegungsaufgaben verbessern die Kinder ganz nebenbei Kraft, Koordination und Körpergefühl – immer mit Spaß, Sicherheit und viel Freude an Bewegung.</p>
               <div class="price-table">
+                <div class="price-row price-row-trial"><span>Probetraining</span><b>kostenlos</b></div>
                 <div class="price-row"><span>Pro Training</span><b>15,00 €</b></div>
                 <div class="price-row"><span>5er-Karte</span><b>70,00 €</b></div>
                 <div class="price-row"><span>10er-Karte</span><b>130,00 €</b></div>
               </div>
-              <a class="btn btn-primary" href="mailto:eltwisto.marco@gmail.com">Kurs anfragen</a>
+              <a class="btn btn-primary" href="#kontakt" data-kurs="Bambini Class">Probetraining anfragen</a>
               <p class="class-note">Einverständniserklärung beim ersten Training mitbringen *</p>
             </div>
 
@@ -628,11 +641,12 @@
               </div>
               <p class="class-desc">Das Training ist strukturiert aufgebaut und fördert gezielt Kraft, Koordination und Technik. Der Schwerpunkt liegt auf dem Erlernen turnerischer Elemente wie Bogengang, Flick-Flack und Salto – angepasst an das individuelle Können der Teilnehmenden.</p>
               <div class="price-table">
+                <div class="price-row price-row-trial"><span>Probetraining</span><b>kostenlos</b></div>
                 <div class="price-row"><span>Pro Training</span><b>16,00 €</b></div>
                 <div class="price-row"><span>5er-Karte</span><b>75,00 €</b></div>
                 <div class="price-row"><span>10er-Karte</span><b>140,00 €</b></div>
               </div>
-              <a class="btn btn-primary" href="mailto:eltwisto.marco@gmail.com">Kurs anfragen</a>
+              <a class="btn btn-primary" href="#kontakt" data-kurs="Junior Class">Probetraining anfragen</a>
               <p class="class-note">Einverständniserklärung beim ersten Training mitbringen *</p>
             </div>
 
@@ -650,11 +664,12 @@
               </div>
               <p class="class-desc">Ab dem 2.11.2026 startet die neue Airtrack Class im Inselsportclub. Auf der Airtrack werden neue Bewegungen leichter erlernt und bestehende Fähigkeiten gezielt verbessert — im Mittelpunkt stehen Technik, Koordination, Körperspannung und jede Menge Spaß. Geeignet für Anfänger und Fortgeschrittene.</p>
               <div class="price-table">
+                <div class="price-row price-row-trial"><span>Probetraining</span><b>kostenlos</b></div>
                 <div class="price-row"><span>Pro Training</span><b>16,00 €</b></div>
                 <div class="price-row"><span>5er-Karte</span><b>75,00 €</b></div>
                 <div class="price-row"><span>10er-Karte</span><b>140,00 €</b></div>
               </div>
-              <a class="btn btn-primary" href="mailto:eltwisto.marco@gmail.com">Kurs anfragen</a>
+              <a class="btn btn-primary" href="#kontakt" data-kurs="Airtrack Class">Probetraining anfragen</a>
               <p class="class-note">Einverständniserklärung beim ersten Training mitbringen *</p>
             </div>
           </div>
@@ -716,7 +731,7 @@
         <section class="cta-band" id="kontakt">
           <p class="eyebrow reveal">Kontakt</p>
           <h2 class="reveal">Bereit für den ersten Schritt?</h2>
-          <p class="reveal">Schreib mir oder ruf einfach an — wir finden gemeinsam den passenden Kurs.</p>
+          <p class="reveal">Das erste Training ist kostenlos und unverbindlich. Schreib mir oder ruf einfach an — wir finden gemeinsam den passenden Kurs.</p>
           <div class="cta-row reveal" style="justify-content:center;">
             <a class="btn btn-ghost" href="mailto:eltwisto.marco@gmail.com">eltwisto.marco@gmail.com</a>
             <a class="btn btn-ghost" href="tel:+4917847259588">0178 47259588</a>
@@ -878,6 +893,22 @@
   // SimplyForms nimmt die Anfrage entgegen und leitet sie per Mail weiter.
   // Der Dienst speichert nichts; leer lassen faellt auf das E-Mail-Programm zurueck.
   const FORM_ENDPOINT = 'https://api.simplyforms.app/v1/forms/rZ1_KMinTYGx7huMgvStYA';
+
+  // Wer aus einer Kurskarte kommt, findet die Anfrage schon vorformuliert vor.
+  // Eigenen Text des Besuchers nie ueberschreiben, eine unveraenderte Vorlage schon.
+  let kursVorlage = '';
+  document.querySelectorAll('[data-kurs]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      const msg = document.getElementById('cf-message');
+      if(!msg) return;
+      const aktuell = msg.value.trim();
+      if(aktuell === '' || aktuell === kursVorlage){
+        kursVorlage = 'Hallo Marco, ich interessiere mich für ein kostenloses Probetraining in der '
+                    + btn.dataset.kurs + '. Wann wäre das möglich?';
+        msg.value = kursVorlage;
+      }
+    });
+  });
 
   const cf = document.getElementById('contactForm');
   if(cf){
