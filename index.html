@@ -456,6 +456,9 @@
   /* ===================== FOOTER ===================== */
   footer{background:var(--ink); color:rgba(243,244,238,.7); padding:32px 20px; text-align:center;}
   footer .logo b{color:#fff;}
+  /* Die Akzentfarbe ist auf dunklem Grund zu schwach (3.07:1); im dunklen
+     Band ist Gelb ohnehin die Akzentfarbe. */
+  footer .logo span{color:var(--yellow);}
   footer .logo-icon{height:32px;}
   footer .foot-links{display:flex; gap:18px; justify-content:center; margin:18px 0; flex-wrap:wrap;}
   footer .foot-links a{font-size:13px; text-decoration:none; color:rgba(243,244,238,.7);}
@@ -518,9 +521,10 @@
         <div class="mobile-menu" id="mmenu">
           <a href="#top">Startseite</a>
           <a href="#kurse">Kurse</a>
+          <a href="#einzeltraining">Einzeltraining</a>
+          <a href="#standorte">Standorte</a>
           <a class="sub" href="#teltow">↳ Teltow</a>
           <a class="sub" href="#berlin">↳ Berlin</a>
-          <a href="#einzeltraining">Einzeltraining</a>
           <a href="#kontakt">Kontakt</a>
         </div>
 
@@ -686,6 +690,18 @@
           </div>
         </section>
 
+        <!-- ===== EINZELTRAINING ===== -->
+        <section class="single" id="einzeltraining">
+          <div class="single-box reveal">
+            <p class="eyebrow" style="margin-bottom:6px;">1:1 Training</p>
+            <h2 style="font-size:1.5rem;">Einzeltraining</h2>
+            <p>Im Einzeltraining stehst du im Mittelpunkt. Gemeinsam arbeiten wir gezielt an deinen persönlichen Zielen und passen das Training individuell an dein Können und Lerntempo an — egal ob Bogengang, Flick-Flack, Salto oder andere akrobatische Elemente.</p>
+            <div class="single-price">70,00 € <span>pro Einheit</span></div>
+            <a class="btn btn-primary" href="#kontakt" data-kurs="Einzeltraining">Einzeltraining anfragen</a>
+            <p class="single-note">Das kostenlose Probetraining gilt für die Gruppenkurse.</p>
+          </div>
+        </section>
+
         <!-- ===== LOCATIONS ===== -->
         <section class="locations" id="standorte">
           <div class="section-head">
@@ -715,17 +731,6 @@
                 <a href="#airtrack-class">Preise &amp; Zeiten ansehen →</a>
               </div>
             </div>
-          </div>
-        </section>
-
-        <!-- ===== EINZELTRAINING ===== -->
-        <section class="single" id="einzeltraining">
-          <div class="single-box reveal">
-            <p class="eyebrow" style="margin-bottom:6px;">1:1 Training</p>
-            <h2 style="font-size:1.5rem;">Einzeltraining</h2>
-            <p>Im Einzeltraining stehst du im Mittelpunkt. Gemeinsam arbeiten wir gezielt an deinen persönlichen Zielen und passen das Training individuell an dein Können und Lerntempo an — egal ob Bogengang, Flick-Flack, Salto oder andere akrobatische Elemente.</p>
-            <div class="single-price">70,00 € <span>pro Einheit</span></div>
-            <a class="btn btn-primary" href="mailto:eltwisto.marco@gmail.com">Einzeltraining anfragen</a>
           </div>
         </section>
 
@@ -905,8 +910,11 @@
       if(!msg) return;
       const aktuell = msg.value.trim();
       if(aktuell === '' || aktuell === kursVorlage){
-        kursVorlage = 'Hallo Marco, ich interessiere mich für ein kostenloses Probetraining in der '
-                    + btn.dataset.kurs + '. Wann wäre das möglich?';
+        const k = btn.dataset.kurs;
+        kursVorlage = (k === 'Einzeltraining')
+          ? 'Hallo Marco, ich interessiere mich für ein Einzeltraining. Wann hättest du Zeit?'
+          : 'Hallo Marco, ich interessiere mich für ein kostenloses Probetraining in der '
+            + k + '. Wann wäre das möglich?';
         msg.value = kursVorlage;
       }
     });
