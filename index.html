@@ -19,10 +19,85 @@
 <meta property="og:image:alt" content="eltwistoacademy - Kopfüber wachsen. Akrobatik Kurse &amp; Personal Training in Teltow &amp; Berlin">
 <meta name="twitter:card" content="summary_large_image">
 <title>eltwistoacademy — Akrobatik Kurse in Teltow &amp; Berlin</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<!-- Schriften liegen lokal im Ordner assets/fonts, es wird nichts von Google nachgeladen. -->
+<link rel="preload" href="assets/fonts/bricolage-grotesque-400-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+  /* Bricolage Grotesque 400-800 — latin-ext */
+  @font-face {
+    font-family: 'Bricolage Grotesque';
+    font-style: normal;
+    font-weight: 400 800;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url(assets/fonts/bricolage-grotesque-400-800-latin-ext.woff2) format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  /* Bricolage Grotesque 400-800 — latin */
+  @font-face {
+    font-family: 'Bricolage Grotesque';
+    font-style: normal;
+    font-weight: 400 800;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url(assets/fonts/bricolage-grotesque-400-800-latin.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  /* Inter 400-700 — latin-ext */
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url(assets/fonts/inter-400-700-latin-ext.woff2) format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  /* Inter 400-700 — latin */
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url(assets/fonts/inter-400-700-latin.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  /* Space Mono 400 — latin-ext */
+  @font-face {
+    font-family: 'Space Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(assets/fonts/space-mono-400-latin-ext.woff2) format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  /* Space Mono 400 — latin */
+  @font-face {
+    font-family: 'Space Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(assets/fonts/space-mono-400-latin.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  /* Space Mono 700 — latin-ext */
+  @font-face {
+    font-family: 'Space Mono';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(assets/fonts/space-mono-700-latin-ext.woff2) format('woff2');
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+  /* Space Mono 700 — latin */
+  @font-face {
+    font-family: 'Space Mono';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(assets/fonts/space-mono-700-latin.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
   :root{
     --ink:#17213B;
     --ink-soft:rgba(23,33,59,0.68);
@@ -655,15 +730,24 @@
               <p>Beim Besuch dieser Website werden automatisch Informationen durch den Hosting-Provider erfasst (z. B. IP-Adresse, Browsertyp, Betriebssystem, Uhrzeit des Zugriffs). Diese Daten dienen ausschließlich der technischen Sicherheit und Verbesserung der Website.</p>
 
               <h3>4. Kontaktaufnahme</h3>
-              <p>Wenn du mich per E-Mail oder Kontaktformular kontaktierst, werden deine Angaben zur Bearbeitung der Anfrage gespeichert. Diese Daten gebe ich nicht ohne deine Einwilligung weiter.</p>
+              <p>Das Kontaktformular auf dieser Website speichert keine Daten auf einem Server und sendet auch nichts an einen Formulardienst. Beim Klick auf „Senden" öffnet sich dein eigenes E-Mail-Programm mit einer vorbereiteten Nachricht, die du selbst abschickst. Deine Anfrage erreicht mich also als ganz normale E-Mail.</p>
+              <p>Diese E-Mails werden bei meinem E-Mail-Anbieter Google Ireland Limited (Gmail) gespeichert und von mir ausschließlich zur Bearbeitung deiner Anfrage verarbeitet (Art. 6 Abs. 1 lit. a und lit. b DSGVO). Ich gebe diese Daten nicht ohne deine Einwilligung weiter und lösche sie, sobald sie nicht mehr benötigt werden.</p>
 
-              <h3>5. Cookies</h3>
-              <p>Diese Website verwendet ggf. Cookies. Cookies richten keinen Schaden an und enthalten keine Viren. Sie dienen dazu, das Angebot nutzerfreundlicher zu gestalten.</p>
+              <h3>5. Cookies und Tracking</h3>
+              <p>Diese Website setzt keine Cookies und bindet keine Analyse-, Werbe- oder Tracking-Dienste ein. Dein Surfverhalten wird nicht ausgewertet und es werden keine Profile gebildet.</p>
 
               <h3>6. Hosting</h3>
-              <p>Diese Website wird bei IONOS gehostet. Der Hosting-Anbieter erhebt Daten im Rahmen der Auftragsverarbeitung gemäß Art. 28 DSGVO.</p>
+              <p>Diese Website wird über GitHub Pages bereitgestellt, einen Dienst der GitHub Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, USA. Beim Aufruf der Seite überträgt dein Browser technisch notwendige Daten an GitHub — unter anderem IP-Adresse, Browsertyp, Betriebssystem und Zeitpunkt des Zugriffs. Diese werden dort in Server-Logfiles verarbeitet.</p>
+              <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer sicheren und zuverlässigen Bereitstellung der Website). Die Übermittlung in die USA stützt sich auf die Zertifizierung von GitHub unter dem EU-US Data Privacy Framework sowie auf Standardvertragsklauseln. Einzelheiten findest du in der <a href="https://docs.github.com/de/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
 
-              <h3>7. Deine Rechte</h3>
+              <h3>7. Schriftarten</h3>
+              <p>Die auf dieser Website verwendeten Schriftarten sind lokal eingebunden und werden zusammen mit der Seite ausgeliefert. Es wird dafür keine Verbindung zu Servern von Google Fonts aufgebaut und deine IP-Adresse wird zu diesem Zweck nicht an Dritte übertragen.</p>
+
+              <h3>8. Google Maps</h3>
+              <p>Bei den Trainingsorten sind Karten des Dienstes Google Maps eingebunden. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Beim Aufruf der Seite wird die Karte von einem Google-Server geladen; dabei wird deine IP-Adresse an Google übertragen, und es können Daten auch an Server in den USA übermittelt werden.</p>
+              <p>Die Einbindung erfolgt, damit du die Trainingsorte leicht findest (Art. 6 Abs. 1 lit. f DSGVO). Wenn du das nicht möchtest, kannst du das Laden der Karten über die Einstellungen deines Browsers unterbinden. Mehr dazu in der <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Datenschutzerklärung von Google</a>.</p>
+
+              <h3>9. Deine Rechte</h3>
               <p>Du hast jederzeit das Recht auf:</p>
               <ul>
                 <li>Auskunft über deine gespeicherten Daten</li>
@@ -674,10 +758,10 @@
               </ul>
               <p>Hierzu kannst du dich jederzeit unter der oben angegebenen Adresse an mich wenden.</p>
 
-              <h3>8. Widerruf deiner Einwilligung</h3>
+              <h3>10. Widerruf deiner Einwilligung</h3>
               <p>Eine bereits erteilte Einwilligung zur Datenverarbeitung kannst du jederzeit widerrufen.</p>
 
-              <h3>9. Beschwerderecht</h3>
+              <h3>11. Beschwerderecht</h3>
               <p>Dir steht ein Beschwerderecht bei der zuständigen Datenschutzaufsichtsbehörde zu.</p>
             </div>
           </div>
