@@ -317,19 +317,36 @@
   .class-note{font-size:11px; color:rgba(243,244,238,.55); margin:12px 0 0; text-align:center;}
 
   .consent-note{
-    margin-top:24px; display:flex; align-items:center; gap:14px; flex-wrap:wrap;
-    background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
-    border-radius:20px; padding:16px 20px;
+    margin-top:26px; display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+    background:linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.035));
+    border:1px solid rgba(255,201,60,0.22);
+    border-radius:var(--r-card); padding:18px;
   }
-  .consent-note .icon{font-size:20px;}
-  .consent-note .txt{flex:1; min-width:180px;}
-  .consent-note b{display:block; font-size:13.5px; color:#fff;}
-  .consent-note span{font-size:12.5px; color:rgba(243,244,238,.55);}
-  .consent-note a{
-    font-size:13px; font-weight:700; color:var(--yellow); text-decoration:none;
-    white-space:nowrap;
+  .consent-icon{
+    width:46px; height:46px; flex-shrink:0; border-radius:16px;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(255,201,60,0.14); color:var(--yellow);
   }
-  .consent-note a:hover{text-decoration:underline;}
+  .consent-icon svg{width:22px; height:22px;}
+  .consent-txt{flex:1; min-width:190px;}
+  .consent-txt b{
+    display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+    font-size:14.5px; color:#fff; margin-bottom:4px;
+  }
+  .consent-tag{
+    font-family:'Space Mono',monospace; font-size:10px; font-weight:700; letter-spacing:.04em;
+    color:var(--yellow); background:rgba(255,201,60,0.14);
+    padding:3px 8px; border-radius:99px;
+  }
+  .consent-txt > span{font-size:12.5px; line-height:1.5; color:rgba(243,244,238,.55);}
+  .consent-btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    width:100%; padding:11px 18px; border-radius:99px;
+    font-size:13px; font-weight:700; text-decoration:none; white-space:nowrap;
+    color:var(--yellow); border:1.5px solid rgba(255,201,60,0.45); transition:.15s;
+  }
+  .consent-btn svg{width:16px; height:16px;}
+  .consent-btn:hover{background:var(--yellow); border-color:var(--yellow); color:var(--ink);}
 
   /* ===================== LOCATIONS ===================== */
   .locations{background:var(--paper);}
@@ -352,7 +369,10 @@
   /* Gleiches Layout wie die Kurse: die Sektion traegt zusaetzlich .schedule,
      deshalb greifen dort alle Kurs-Styles. Hier nur die Breite der einzelnen
      Karte begrenzen, damit sie auf grossen Screens nicht auseinandergezogen wird. */
-  .single{border-radius:0 0 var(--r-band) var(--r-band); margin-top:0;}
+  /* Kurse und Einzeltraining sind ein durchgehendes Band — dazwischen darf
+     weniger Luft sein als zu den hellen Nachbarsektionen. */
+  #kurse{padding-bottom:30px;}
+  .single{border-radius:0 0 var(--r-band) var(--r-band); margin-top:0; padding-top:30px;}
   .single .class-grid{max-width:380px;}
 
   /* ===================== CTA ===================== */
@@ -489,6 +509,9 @@
     /* Auf breiten Screens wirken 32px Radius an einem 1240px breiten Band kaum,
        deshalb hier deutlich runder. */
     .courses-intro, .schedule, .single, .cta-band, footer{--r-band:48px;}
+    #kurse{padding-bottom:44px;}
+    .single{padding-top:44px;}
+    .consent-btn{width:auto;}
     .loc-grid{grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));}
     .hero{text-align:center;}
     .hero-inner{max-width:680px; margin:0 auto;}
@@ -675,12 +698,17 @@
           </div>
 
           <div class="consent-note reveal">
-            <span class="icon">📄</span>
-            <div class="txt">
-              <b>Einverständniserklärung</b>
+            <span class="consent-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h4"/></svg>
+            </span>
+            <div class="consent-txt">
+              <b>Einverständniserklärung <span class="consent-tag">PDF</span></b>
               <span>* Muss beim ersten Training mitgebracht werden.</span>
             </div>
-            <a href="assets/einverstaendniserklaerung.pdf" target="_blank" rel="noopener">Herunterladen →</a>
+            <a class="consent-btn" href="assets/einverstaendniserklaerung.pdf" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="M7 11l5 5 5-5"/><path d="M5 20h14"/></svg>
+              Herunterladen
+            </a>
           </div>
         </section>
 
