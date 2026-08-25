@@ -118,6 +118,11 @@
     --teal-tint:#E3F6F4;
     --teal-ink:#0F5A54;
     --shadow: 0 1px 2px rgba(23,33,59,0.06), 0 8px 24px rgba(23,33,59,0.08);
+    /* Runde Ecken: --r-band fuer die farbigen Baender, --r-card fuer Karten,
+       --r-field fuer Eingabefelder, 99px fuer alles Pillenfoermige. */
+    --r-band:32px;
+    --r-card:24px;
+    --r-field:14px;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -158,7 +163,7 @@
   .nav-links a:hover{opacity:1; color:var(--flip);}
   .burger{
     display:flex; align-items:center; justify-content:center;
-    width:38px; height:38px; border-radius:9px; border:1px solid var(--line);
+    width:38px; height:38px; border-radius:14px; border:1px solid var(--line);
     background:var(--paper-card);
   }
   .burger svg{width:18px; height:18px;}
@@ -204,7 +209,7 @@
   .cta-row{display:flex; flex-wrap:wrap; gap:12px; margin-bottom:18px;}
   .btn{
     display:inline-flex; align-items:center; gap:8px;
-    padding:14px 22px; border-radius:11px; font-weight:700; font-size:14.5px;
+    padding:14px 22px; border-radius:99px; font-weight:700; font-size:14.5px;
     text-decoration:none; border:1.5px solid transparent; transition:.15s;
   }
   .btn-primary{background:var(--flip); color:#fff;}
@@ -228,7 +233,7 @@
   .about-media img{
     width:100%; max-width:320px; height:auto;
     aspect-ratio:3/4; object-fit:cover; object-position:50% 12%;
-    border-radius:18px; border:1px solid var(--line);
+    border-radius:var(--r-card); border:1px solid var(--line);
     box-shadow:var(--shadow); background:var(--ink);
   }
   .about-text p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin:0 0 16px;}
@@ -236,12 +241,12 @@
   .chip{
     display:flex; align-items:center; gap:12px;
     background:var(--paper-card); border:1px solid var(--line);
-    border-radius:12px; padding:13px 15px; font-size:13.5px; font-weight:600;
+    border-radius:18px; padding:13px 15px; font-size:13.5px; font-weight:600;
   }
   .chip svg{width:20px; height:20px; flex-shrink:0; color:var(--flip);}
 
   /* ===================== KURSE INTRO ===================== */
-  .courses-intro{background:var(--yellow-tint);}
+  .courses-intro{background:var(--yellow-tint); border-radius:var(--r-band);}
   .courses-intro-text{max-width:64ch;}
   .courses-intro-text p{font-size:15.5px; line-height:1.7; color:var(--ink-soft); margin:0 0 16px;}
   .value-chips{display:flex; flex-wrap:wrap; gap:10px; margin-top:24px;}
@@ -252,7 +257,9 @@
   }
 
   /* ===================== SCHEDULE (dark band) ===================== */
-  .schedule{background:var(--ink); color:#F3F4EE;}
+  /* Kurse und Einzeltraining sind zwei Sektionen, sollen aber als ein rundes
+     dunkles Band wirken: oben rundet die Kurs-Sektion, unten das Einzeltraining. */
+  .schedule{background:var(--ink); color:#F3F4EE; border-radius:var(--r-band) var(--r-band) 0 0; margin-top:14px;}
   .schedule .eyebrow{color:var(--yellow);}
   .schedule h2{color:#fff;}
   .schedule-sub{color:rgba(243,244,238,.6); font-size:14.5px; margin-top:10px; max-width:50ch;}
@@ -274,7 +281,7 @@
   .class-card{
     background:rgba(255,255,255,0.05);
     border:1px solid rgba(255,255,255,0.1);
-    border-radius:18px; padding:24px;
+    border-radius:var(--r-card); padding:24px;
   }
   .class-top{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:16px;}
   .class-top h3{font-family:'Bricolage Grotesque',sans-serif; font-size:1.3rem; margin:0; color:#fff;}
@@ -312,7 +319,7 @@
   .consent-note{
     margin-top:24px; display:flex; align-items:center; gap:14px; flex-wrap:wrap;
     background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
-    border-radius:14px; padding:16px 20px;
+    border-radius:20px; padding:16px 20px;
   }
   .consent-note .icon{font-size:20px;}
   .consent-note .txt{flex:1; min-width:180px;}
@@ -328,7 +335,7 @@
   .locations{background:var(--paper);}
   .loc-grid{display:grid; grid-template-columns:1fr; gap:16px; margin-top:28px;}
   .loc-card{
-    background:var(--paper-card); border:1px solid var(--line); border-radius:16px;
+    background:var(--paper-card); border:1px solid var(--line); border-radius:var(--r-card);
     overflow:hidden;
     box-shadow:var(--shadow);
   }
@@ -345,16 +352,17 @@
   /* Gleiches Layout wie die Kurse: die Sektion traegt zusaetzlich .schedule,
      deshalb greifen dort alle Kurs-Styles. Hier nur die Breite der einzelnen
      Karte begrenzen, damit sie auf grossen Screens nicht auseinandergezogen wird. */
+  .single{border-radius:0 0 var(--r-band) var(--r-band); margin-top:0;}
   .single .class-grid{max-width:380px;}
 
   /* ===================== CTA ===================== */
-  .cta-band{background:var(--flip-tint); text-align:center;}
+  .cta-band{background:var(--flip-tint); text-align:center; border-radius:var(--r-band);}
   .cta-band h2{margin-bottom:12px;}
   .cta-band p{font-size:15px; color:var(--ink-soft); margin:0 0 26px;}
   .contact-form{
     max-width:480px; margin:36px auto 0; text-align:left;
     background:var(--paper-card); border:1px solid var(--line);
-    border-radius:18px; padding:28px; box-shadow:var(--shadow);
+    border-radius:var(--r-card); padding:28px; box-shadow:var(--shadow);
   }
   .form-row{margin-bottom:16px;}
   .form-row label{
@@ -362,7 +370,7 @@
     text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft);
   }
   .form-row input, .form-row textarea{
-    width:100%; padding:11px 13px; border-radius:9px; border:1.5px solid var(--line);
+    width:100%; padding:12px 16px; border-radius:var(--r-field); border:1.5px solid var(--line);
     font-family:'Inter',sans-serif; font-size:14.5px; color:var(--ink);
     background:var(--paper); resize:vertical; transition:.15s;
   }
@@ -379,7 +387,7 @@
   .hp-wrap{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;}
   .form-submit{width:100%; justify-content:center;}
   .form-fallback{
-    margin-top:16px; padding:16px; border-radius:12px;
+    margin-top:16px; padding:16px; border-radius:18px;
     background:var(--flip-tint); border:1px solid var(--line);
   }
   .form-fallback p{font-size:13px; line-height:1.6; color:var(--ink); margin:0 0 8px;}
@@ -398,7 +406,7 @@
     position:absolute; inset:0; background:rgba(23,33,59,0.55);
   }
   .legal-modal-panel{
-    position:relative; background:var(--paper-card); border-radius:20px;
+    position:relative; background:var(--paper-card); border-radius:26px;
     max-width:600px; width:100%; max-height:82vh; overflow-y:auto;
     padding:32px 26px 36px; box-shadow:0 30px 80px rgba(0,0,0,.4);
   }
@@ -439,7 +447,10 @@
   .field-value a:hover{text-decoration:underline;}
 
   /* ===================== FOOTER ===================== */
-  footer{background:var(--ink); color:rgba(243,244,238,.7); padding:32px 20px; text-align:center;}
+  footer{
+    background:var(--ink); color:rgba(243,244,238,.7); padding:32px 20px; text-align:center;
+    border-radius:var(--r-band) var(--r-band) 0 0;
+  }
   footer .logo b{color:#fff;}
   /* Die Akzentfarbe ist auf dunklem Grund zu schwach (3.07:1); im dunklen
      Band ist Gelb ohnehin die Akzentfarbe. */
