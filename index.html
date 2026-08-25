@@ -486,6 +486,9 @@
     .about-text{flex:1;}
     section{padding:80px 48px;}
     .class-grid{grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));}
+    /* Auf breiten Screens wirken 32px Radius an einem 1240px breiten Band kaum,
+       deshalb hier deutlich runder. */
+    .courses-intro, .schedule, .single, .cta-band, footer{--r-band:48px;}
     .loc-grid{grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));}
     .hero{text-align:center;}
     .hero-inner{max-width:680px; margin:0 auto;}
