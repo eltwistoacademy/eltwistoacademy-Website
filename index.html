@@ -505,7 +505,11 @@
     .about-media img{max-width:none;}
     .about-text{flex:1;}
     section{padding:80px 48px;}
-    .class-grid{grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));}
+    /* Karten teilen sich die Zeilen des Grids (subgrid), damit Zeitplan,
+       Beschreibung, Preistabelle und Button in allen Spalten auf gleicher
+       Hoehe sitzen — unabhaengig von der Textlaenge. */
+    .class-grid{grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); grid-template-rows:repeat(6, auto);}
+    .class-card{display:grid; grid-template-rows:subgrid; grid-row:span 6; row-gap:0;}
     /* Auf breiten Screens wirken 32px Radius an einem 1240px breiten Band kaum,
        deshalb hier deutlich runder. */
     .courses-intro, .schedule, .single, .cta-band, footer{--r-band:48px;}
