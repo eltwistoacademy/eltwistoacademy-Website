@@ -499,7 +499,10 @@
     .burger{display:none;}
     .logo-icon{height:30px;}
     .hero{padding:64px 48px 70px;}
-    .hero-sub{font-size:1.25rem;}
+    /* Auf breiten Screens soll der Satz in einer Zeile stehen: keine
+       ch-Begrenzung mehr, und zwischen 700 und 780px eine Spur kleiner,
+       damit er auch dort nicht umbricht. */
+    .hero-sub{font-size:1.2rem; max-width:none; margin-bottom:24px;}
     .about-grid{flex-direction:row; align-items:flex-start; gap:52px;}
     .about-media{flex:0 0 36%; max-width:400px;}
     .about-media img{max-width:none;}
@@ -520,6 +523,9 @@
     .hero{text-align:center;}
     .hero-inner{max-width:680px; margin:0 auto;}
     .cta-row{justify-content:center;}
+  }
+  @container site (min-width: 780px){
+    .hero-sub{font-size:1.25rem;}
   }
   @container site (min-width: 1040px){
     .hero{padding:96px 64px 110px;}
@@ -605,14 +611,15 @@
             <h2 class="reveal">Bewegung mit Freude entdecken.</h2>
           </div>
           <div class="courses-intro-text">
-            <p class="reveal">Kinder lernen am besten, wenn sie Spaß an der Bewegung haben. Genau das steht bei unseren Akrobatik- und Tumblingkursen in Teltow und Berlin im Mittelpunkt — spielerisch und altersgerecht vermittelt.</p>
+            <p class="reveal">Kinder lernen am besten, wenn sie Spaß an der Bewegung haben. Genau das steht bei unseren Akrobatik- und Tumblingkursen in Teltow und Berlin im Mittelpunkt, spielerisch und altersgerecht vermittelt.</p>
             <p class="reveal">Dabei entwickeln die Kinder nicht nur Kraft, Koordination und Beweglichkeit, sondern auch Selbstvertrauen, Mut und Teamgeist.</p>
-            <p class="reveal">Jedes Kind wird entsprechend seinem Alter und individuellem Leistungsstand begleitet — in einer sicheren, motivierenden Atmosphäre, in der neue Bewegungen entdeckt und Erfolge gefeiert werden.</p>
+            <p class="reveal">Jedes Kind wird entsprechend seinem Alter und individuellem Leistungsstand begleitet, in einer sicheren und motivierenden Atmosphäre, in der neue Bewegungen entdeckt und Erfolge gefeiert werden.</p>
           </div>
           <div class="value-chips">
             <div class="value-chip reveal"><span>Kraft &amp; Koordination</span></div>
             <div class="value-chip reveal"><span>Selbstvertrauen &amp; Mut</span></div>
             <div class="value-chip reveal"><span>Teamgeist</span></div>
+            <div class="value-chip reveal"><span>Spaß</span></div>
           </div>
         </section>
 
