@@ -167,18 +167,42 @@
     background:var(--paper-card);
   }
   .burger svg{width:18px; height:18px;}
-  .mobile-menu{
-    display:none; flex-direction:column; gap:2px;
-    padding:8px 20px 18px; background:var(--paper);
-    border-bottom:1px solid var(--line);
+  /* Mobiles Menue als Panel, das von rechts hereinfaehrt. Es haengt an der
+     Viewport-Kante (position:fixed), damit es auch mitten auf der Seite
+     erscheint und nicht oben im Dokument aufklappt. */
+  .menu-backdrop{
+    position:fixed; inset:0; z-index:150;
+    background:rgba(23,33,59,0.45);
+    opacity:0; visibility:hidden; transition:opacity .28s ease, visibility .28s;
   }
-  .mobile-menu.open{display:flex;}
+  .menu-backdrop.open{opacity:1; visibility:visible;}
+  .mobile-menu{
+    position:fixed; top:0; right:0; z-index:200;
+    width:min(80vw, 320px); height:100vh; height:100dvh;
+    display:flex; flex-direction:column; gap:2px;
+    padding:14px 22px calc(24px + env(safe-area-inset-bottom));
+    background:var(--paper); border-left:1px solid var(--line);
+    box-shadow:-24px 0 60px rgba(23,33,59,0.18);
+    overflow-y:auto; overscroll-behavior:contain;
+    transform:translateX(100%); visibility:hidden;
+    transition:transform .28s ease, visibility .28s;
+  }
+  .mobile-menu.open{transform:translateX(0); visibility:visible;}
+  .menu-head{display:flex; justify-content:flex-end; margin-bottom:4px;}
+  .menu-close{
+    display:flex; align-items:center; justify-content:center;
+    width:38px; height:38px; border-radius:14px;
+    border:1px solid var(--line); background:var(--paper-card); color:var(--ink);
+  }
+  .menu-close svg{width:18px; height:18px;}
   .mobile-menu a{
-    padding:12px 4px; text-decoration:none; color:var(--ink);
+    padding:14px 4px; text-decoration:none; color:var(--ink);
     font-size:15px; font-weight:600; border-bottom:1px solid var(--line);
   }
   .mobile-menu a:last-child{border-bottom:none;}
   .mobile-menu .sub{padding-left:14px; font-weight:500; font-size:14px; opacity:.75;}
+  /* Hintergrund nicht mitscrollen, solange das Panel offen ist. */
+  body.menu-open{overflow:hidden;}
 
   /* ===================== HERO ===================== */
   .hero{ padding:28px 20px 40px; position:relative; overflow:hidden;}
@@ -497,6 +521,7 @@
   @container site (min-width: 700px){
     .nav-links{display:flex;}
     .burger{display:none;}
+    .mobile-menu, .menu-backdrop{display:none;}
     .logo-icon{height:30px;}
     .hero{padding:64px 48px 70px;}
     /* Auf breiten Screens soll der Satz in einer Zeile stehen: keine
@@ -537,8 +562,12 @@
 
   <div class="site" id="site">
 
+        <!-- Sprungziel fuer "Startseite". Die Nav selbst taugt nicht dafuer:
+             sie klebt oben (sticky), ein Sprung dorthin bewegt die Seite kaum. -->
+        <span id="top" aria-hidden="true"></span>
+
         <!-- ===== NAV ===== -->
-        <nav class="nav" id="top">
+        <nav class="nav">
           <div class="logo"><img src="assets/logo.png" alt="eltwistoacademy Logo" class="logo-icon" width="111" height="120"><b>eltwisto</b><span>academy</span></div>
           <div class="nav-links">
             <a href="#top">Startseite</a>
@@ -546,11 +575,17 @@
             <a href="#einzeltraining">Einzeltraining</a>
             <a href="#kontakt">Kontakt</a>
           </div>
-          <button class="burger" onclick="document.getElementById('mmenu').classList.toggle('open')" aria-label="Menü öffnen">
+          <button class="burger" onclick="toggleMenu()" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mmenu">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
           </button>
         </nav>
-        <div class="mobile-menu" id="mmenu">
+        <div class="menu-backdrop" id="mbackdrop" onclick="closeMenu()"></div>
+        <div class="mobile-menu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menü" aria-hidden="true">
+          <div class="menu-head">
+            <button class="menu-close" onclick="closeMenu()" aria-label="Menü schließen">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+            </button>
+          </div>
           <a href="#top">Startseite</a>
           <a href="#kurse">Kurse</a>
           <a href="#einzeltraining">Einzeltraining</a>
@@ -931,8 +966,19 @@
   }, {threshold:0.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
+  // Mobiles Menue: Panel und Backdrop zusammen schalten, Seite dahinter sperren.
+  function setMenu(open){
+    document.getElementById('mmenu').classList.toggle('open', open);
+    document.getElementById('mbackdrop').classList.toggle('open', open);
+    document.getElementById('mmenu').setAttribute('aria-hidden', open ? 'false' : 'true');
+    document.querySelector('.burger').setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.classList.toggle('menu-open', open);
+  }
+  function toggleMenu(){ setMenu(!document.getElementById('mmenu').classList.contains('open')); }
+  function closeMenu(){ setMenu(false); }
+
   document.querySelectorAll('#mmenu a').forEach(link=>{
-    link.addEventListener('click', ()=> document.getElementById('mmenu').classList.remove('open'));
+    link.addEventListener('click', closeMenu);
   });
 
   function openLegal(e, id){
@@ -945,6 +991,7 @@
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape'){
       document.querySelectorAll('.legal-modal.open').forEach(m => m.classList.remove('open'));
+      closeMenu();
     }
   });
 
