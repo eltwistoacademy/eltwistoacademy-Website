@@ -523,7 +523,9 @@
     .burger{display:none;}
     .mobile-menu, .menu-backdrop{display:none;}
     .logo-icon{height:30px;}
-    .hero{padding:64px 48px 70px;}
+    /* Hero und "Dein Trainer" duerfen auf dem Desktop enger zusammenruecken. */
+    .hero{padding:64px 48px 40px;}
+    .about{padding-top:52px;}
     /* Auf breiten Screens soll der Satz in einer Zeile stehen: keine
        ch-Begrenzung mehr, und zwischen 700 und 780px eine Spur kleiner,
        damit er auch dort nicht umbricht. */
@@ -553,7 +555,8 @@
     .hero-sub{font-size:1.25rem;}
   }
   @container site (min-width: 1040px){
-    .hero{padding:96px 64px 110px;}
+    .hero{padding:96px 64px 52px;}
+    .about{padding-top:64px;}
     section{padding:96px 64px;}
   }
 </style>
