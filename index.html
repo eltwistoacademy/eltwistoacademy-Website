@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Akrobatik-Kurse für Kinder &amp; Jugendliche in Teltow und Berlin — erstes Training kostenlos. Anfänger und Fortgeschrittene, Alter 6–16. Gruppen- und Einzeltraining.">
+<meta name="description" content="Akrobatik-Kurse für Kinder &amp; Jugendliche in Teltow und Berlin — erstes Training kostenlos. Anfänger und Fortgeschrittene, Alter 6–16. Gruppenkurse und Personal Training.">
 
 <!-- Vorschaukarte beim Teilen (WhatsApp, Instagram, Facebook, LinkedIn ...).
      Die URLs müssen absolut sein - relative Pfade werden von den Scrapern ignoriert. -->
@@ -12,7 +12,7 @@
 <meta property="og:locale" content="de_DE">
 <meta property="og:url" content="https://www.eltwistoacademy.de/">
 <meta property="og:title" content="eltwistoacademy — Akrobatik Kurse in Teltow &amp; Berlin">
-<meta property="og:description" content="Akrobatik-Kurse für Kinder &amp; Jugendliche in Teltow und Berlin — erstes Training kostenlos. Anfänger und Fortgeschrittene, Alter 6–16. Gruppen- und Einzeltraining.">
+<meta property="og:description" content="Akrobatik-Kurse für Kinder &amp; Jugendliche in Teltow und Berlin — erstes Training kostenlos. Anfänger und Fortgeschrittene, Alter 6–16. Gruppenkurse und Personal Training.">
 <meta property="og:image" content="https://www.eltwistoacademy.de/assets/share.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -281,8 +281,8 @@
   }
 
   /* ===================== SCHEDULE (dark band) ===================== */
-  /* Kurse und Einzeltraining sind zwei Sektionen, sollen aber als ein rundes
-     dunkles Band wirken: oben rundet die Kurs-Sektion, unten das Einzeltraining. */
+  /* Kurse und Personal Training sind zwei Sektionen, sollen aber als ein rundes
+     dunkles Band wirken: oben rundet die Kurs-Sektion, unten das Personal Training. */
   .schedule{background:var(--ink); color:#F3F4EE; border-radius:var(--r-band) var(--r-band) 0 0; margin-top:14px;}
   .schedule .eyebrow{color:var(--yellow);}
   .schedule h2{color:#fff;}
@@ -389,11 +389,11 @@
   .loc-card a{font-size:13.5px; font-weight:700; color:var(--flip); text-decoration:none;}
   .loc-card a:hover{text-decoration:underline;}
 
-  /* ===================== EINZELTRAINING ===================== */
+  /* ===================== PERSONAL TRAINING ===================== */
   /* Gleiches Layout wie die Kurse: die Sektion traegt zusaetzlich .schedule,
      deshalb greifen dort alle Kurs-Styles. Hier nur die Breite der einzelnen
      Karte begrenzen, damit sie auf grossen Screens nicht auseinandergezogen wird. */
-  /* Kurse und Einzeltraining sind ein durchgehendes Band — dazwischen darf
+  /* Kurse und Personal Training sind ein durchgehendes Band — dazwischen darf
      weniger Luft sein als zu den hellen Nachbarsektionen. */
   #kurse{padding-bottom:30px;}
   .single{border-radius:0 0 var(--r-band) var(--r-band); margin-top:0; padding-top:30px;}
@@ -572,7 +572,7 @@
           <div class="nav-links">
             <a href="#top">Startseite</a>
             <a href="#kurse">Kurse</a>
-            <a href="#einzeltraining">Einzeltraining</a>
+            <a href="#personal-training">Personal Training</a>
             <a href="#kontakt">Kontakt</a>
           </div>
           <button class="burger" onclick="toggleMenu()" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mmenu">
@@ -588,7 +588,7 @@
           </div>
           <a href="#top">Startseite</a>
           <a href="#kurse">Kurse</a>
-          <a href="#einzeltraining">Einzeltraining</a>
+          <a href="#personal-training">Personal Training</a>
           <a href="#standorte">Standorte</a>
           <a class="sub" href="#teltow">↳ Teltow</a>
           <a class="sub" href="#berlin">↳ Berlin</a>
@@ -626,7 +626,7 @@
               <h2 class="reveal">Hallo, ich bin Marco.</h2>
               <div style="margin-top:18px;">
                 <p class="reveal">Zur Akrobatik bin ich 2016 gekommen, seit 2020 gebe ich selbst Training. Ausgebildet bin ich als Sport- und Fitnesskaufmann – und ich stehe bis heute selbst regelmäßig auf der Matte.</p>
-                <p class="reveal">Ich biete Gruppenkurse und Einzeltraining im Bereich Akrobatik an – unabhängig davon, ob du gerade erst anfängst oder schon lange dabei bist.</p>
+                <p class="reveal">Ich biete Gruppenkurse und Personal Training im Bereich Akrobatik an – unabhängig davon, ob du gerade erst anfängst oder schon lange dabei bist.</p>
                 <p class="reveal">Im Training geht es nicht nur um turnerische Elemente, sondern genauso um Körperbeherrschung, Koordination und Kraft. Wir arbeiten spielerisch und strukturiert an deinen Basics.</p>
                 <p class="reveal">Mit Spaß, gegenseitiger Unterstützung und professioneller Anleitung holst du das Beste aus deinem Körper heraus – und wächst über dich hinaus.</p>
               </div>
@@ -758,18 +758,18 @@
           </div>
         </section>
 
-        <!-- ===== EINZELTRAINING ===== -->
-        <section class="schedule single" id="einzeltraining">
+        <!-- ===== PERSONAL TRAINING ===== -->
+        <section class="schedule single" id="personal-training">
           <div class="section-head">
             <p class="eyebrow reveal">1:1 Training</p>
-            <h2 class="reveal">Einzeltraining</h2>
+            <h2 class="reveal">Personal Training</h2>
             <p class="schedule-sub reveal">Ein Training nur für dich — gezielt an deinen Zielen, in deinem Lerntempo.</p>
           </div>
 
           <div class="class-grid">
             <div class="class-card reveal">
               <div class="class-top">
-                <h3>Einzeltraining</h3>
+                <h3>Personal Training</h3>
                 <span class="age-badge">Alle Levels</span>
               </div>
               <div class="class-schedule">
@@ -778,12 +778,12 @@
                   <span class="row-time">Termin nach Absprache</span>
                 </div>
               </div>
-              <p class="class-desc">Im Einzeltraining stehst du im Mittelpunkt. Gemeinsam arbeiten wir gezielt an deinen persönlichen Zielen und passen das Training individuell an dein Können und Lerntempo an — egal ob Bogengang, Flick-Flack, Salto oder andere akrobatische Elemente.</p>
+              <p class="class-desc">Im Personal Training stehst du im Mittelpunkt. Gemeinsam arbeiten wir gezielt an deinen persönlichen Zielen und passen das Training individuell an dein Können und Lerntempo an — egal ob Bogengang, Flick-Flack, Salto oder andere akrobatische Elemente.</p>
               <div class="price-table">
                 <div class="price-row"><span>Pro Einheit</span><b>70,00 €</b></div>
                 <p class="class-desc" style="margin:14px 0 0;"><b>Absage &amp; Ausfallhonorar:</b> Bestätigte Termine können bis 24&nbsp;Stunden vor Trainingsbeginn kostenfrei abgesagt werden. Bei späterer Absage oder Nichterscheinen werden 50&nbsp;% des Preises berechnet (35,00&nbsp;€).</p>
               </div>
-              <a class="btn btn-primary" href="#kontakt" data-kurs="Einzeltraining">Einzeltraining anfragen</a>
+              <a class="btn btn-primary" href="#kontakt" data-kurs="Personal Training">Personal Training anfragen</a>
               <p class="class-note">Das kostenlose Probetraining gilt für die Gruppenkurse.</p>
             </div>
           </div>
@@ -963,6 +963,26 @@
   </div>
 
 <script>
+  // Alte Lesezeichen und Suchtreffer zeigen noch auf #einzeltraining —
+  // die Sektion heisst jetzt #personal-training. Hash still umbiegen.
+  let alterAnker = false;
+  function zumPersonalTraining(){
+    const ziel = document.getElementById('personal-training');
+    // Direkt springen wie bei einem normalen Anker, nicht ueber die ganze Seite gleiten.
+    if(ziel) ziel.scrollIntoView({behavior:'instant', block:'start'});
+  }
+  function altenAnkerUmleiten(){
+    if(location.hash !== '#einzeltraining') return;
+    alterAnker = true;
+    zumPersonalTraining();
+    // Adresszeile aufraeumen; schlaegt das fehl, bleibt der Sprung trotzdem stehen.
+    try{ history.replaceState(null, '', '#personal-training'); }catch(e){}
+  }
+  altenAnkerUmleiten();
+  window.addEventListener('hashchange', altenAnkerUmleiten);
+  // Bilder aendern die Seitenhoehe noch nach dem Skript — danach nachjustieren.
+  window.addEventListener('load', function(){ if(alterAnker) zumPersonalTraining(); });
+
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, {threshold:0.12});
@@ -1011,8 +1031,8 @@
       const aktuell = msg.value.trim();
       if(aktuell === '' || aktuell === kursVorlage){
         const k = btn.dataset.kurs;
-        kursVorlage = (k === 'Einzeltraining')
-          ? 'Hallo Marco, ich interessiere mich für ein Einzeltraining. Wann hättest du Zeit?'
+        kursVorlage = (k === 'Personal Training')
+          ? 'Hallo Marco, ich interessiere mich für ein Personal Training. Wann hättest du Zeit?'
           : 'Hallo Marco, ich interessiere mich für ein kostenloses Probetraining in der '
             + k + '. Wann wäre das möglich?';
         msg.value = kursVorlage;
