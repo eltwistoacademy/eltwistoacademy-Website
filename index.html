@@ -505,6 +505,54 @@
   footer .foot-links a:hover{color:#fff;}
   footer .copy{font-size:12px; color:rgba(243,244,238,.55); margin-top:10px;}
 
+  /* ===================== FAQ ===================== */
+  /* Aufklappbare Fragen ohne JavaScript (<details>). Direkt unter den Standorten,
+     daher oben keine zusaetzliche Luft. */
+  .faq{padding-top:0;}
+  .faq-list{max-width:760px; display:flex; flex-direction:column; gap:10px;}
+  .faq-item{
+    background:var(--paper-card); border:1px solid var(--line);
+    border-radius:18px; box-shadow:var(--shadow);
+  }
+  .faq-item summary{
+    list-style:none; cursor:pointer; padding:18px 22px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    font-weight:700; font-size:15px; line-height:1.4;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{
+    content:"+"; flex-shrink:0; font-size:22px; font-weight:500; line-height:1;
+    color:var(--flip); transition:transform .2s ease;
+  }
+  .faq-item[open] summary::after{transform:rotate(45deg);}
+  .faq-item summary:focus-visible{outline:2px solid var(--flip); outline-offset:2px; border-radius:18px;}
+  .faq-answer{padding:0 22px 20px;}
+  .faq-answer p{font-size:14.5px; line-height:1.65; color:var(--ink-soft); margin:0 0 8px;}
+  .faq-answer p:last-child{margin-bottom:0;}
+  .faq-answer a{color:var(--flip); font-weight:600; text-decoration:none;}
+  .faq-answer a:hover{text-decoration:underline;}
+
+  /* ===================== WHATSAPP-BUTTON ===================== */
+  /* Schwebt unten rechts. Ist nur ein Link: WhatsApp wird erst beim Antippen
+     geoeffnet, vorher wird nichts von WhatsApp geladen. Liegt unter Menue
+     und Datenschutz-Fenster (z-index 150/300). Dunkleres Gruen, damit die
+     weisse Schrift gut lesbar ist. */
+  .wa-float{
+    position:fixed; right:16px; bottom:calc(16px + env(safe-area-inset-bottom)); z-index:100;
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 18px 12px 14px; border-radius:99px;
+    background:#0F7B3F; color:#fff; text-decoration:none;
+    font-weight:700; font-size:14px;
+    box-shadow:0 6px 20px rgba(15,123,63,0.35), 0 2px 6px rgba(23,33,59,0.15);
+    transition:background .15s, transform .15s;
+  }
+  .wa-float:hover{background:#0B6331; transform:translateY(-2px);}
+  .wa-float:focus-visible{outline:3px solid var(--yellow); outline-offset:3px;}
+  .wa-float svg{width:22px; height:22px; flex-shrink:0;}
+  @media (min-width:700px){ .wa-float{right:24px; bottom:24px;} }
+  @media (prefers-reduced-motion: reduce){ .wa-float, .wa-float:hover{transition:none; transform:none;} }
+  @media print{ .wa-float{display:none;} }
+
   /* Sektions-Regeln wie ".about-text p" sind spezifischer als ".eyebrow" und haben
      die Akzentfarbe ueberschrieben — hier wieder herstellen. */
   .about-text p.eyebrow, .cta-band p.eyebrow{color:var(--flip);}
@@ -576,6 +624,7 @@
             <a href="#top">Startseite</a>
             <a href="#kurse">Kurse</a>
             <a href="#personal-training">Personal Training</a>
+            <a href="#faq">FAQ</a>
             <a href="#kontakt">Kontakt</a>
           </div>
           <button class="burger" onclick="toggleMenu()" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mmenu">
@@ -595,6 +644,7 @@
           <a href="#standorte">Standorte</a>
           <a class="sub" href="#teltow">↳ Teltow</a>
           <a class="sub" href="#berlin">↳ Berlin</a>
+          <a href="#faq">Häufige Fragen</a>
           <a href="#kontakt">Kontakt</a>
         </div>
 
@@ -609,7 +659,7 @@
               <a class="btn btn-primary" href="#kontakt">Probetraining anfragen</a>
               <a class="btn btn-ghost" href="#kurse">Kurse &amp; Zeiten ansehen</a>
             </div>
-            <p class="trust-line reveal">Unverbindlich ausprobieren · Für Anfänger &amp; Fortgeschrittene · Alter 6–16</p>
+            <p class="trust-line reveal">Unverbindlich ausprobieren · Für Anfänger &amp; Fortgeschrittene</p>
           </div>
         </header>
 
@@ -667,7 +717,6 @@
             <p class="eyebrow reveal">Kurse &amp; Preise</p>
             <h2 class="reveal">Drei Kurse, ein Ziel.</h2>
             <p class="schedule-sub reveal">Feste Wochentermine in Teltow &amp; Berlin — einzeln buchbar oder als 5er-/10er-Karte. Das erste Training ist kostenlos.</p>
-            <p class="schedule-pause reveal"><span class="dot"></span> Kurspause: 22.09. – 08.10.2026</p>
           </div>
 
           <div class="class-grid">
@@ -783,8 +832,8 @@
               </div>
               <p class="class-desc">Im Personal Training stehst du im Mittelpunkt. Gemeinsam arbeiten wir gezielt an deinen persönlichen Zielen und passen das Training individuell an dein Können und Lerntempo an — egal ob Bogengang, Flick-Flack, Salto oder andere akrobatische Elemente.</p>
               <div class="price-table">
-                <div class="price-row"><span>Pro Einheit</span><b>70,00 €</b></div>
-                <p class="class-desc" style="margin:14px 0 0;"><b>Absage &amp; Ausfallhonorar:</b> Bestätigte Termine können bis 24&nbsp;Stunden vor Trainingsbeginn kostenfrei abgesagt werden. Bei späterer Absage oder Nichterscheinen werden 50&nbsp;% des Preises berechnet (35,00&nbsp;€).</p>
+                <div class="price-row"><span>Pro Einheit</span><b>90,00 €</b></div>
+                <p class="class-desc" style="margin:14px 0 0;"><b>Absage &amp; Ausfallhonorar:</b> Bestätigte Termine können bis 24&nbsp;Stunden vor Trainingsbeginn kostenfrei abgesagt werden. Bei späterer Absage oder Nichterscheinen werden 50&nbsp;% des Preises berechnet (45,00&nbsp;€).</p>
               </div>
               <a class="btn btn-primary" href="#kontakt" data-kurs="Personal Training">Personal Training anfragen</a>
               <p class="class-note">Das kostenlose Probetraining gilt für die Gruppenkurse.</p>
@@ -824,14 +873,61 @@
           </div>
         </section>
 
+        <!-- ===== FAQ ===== -->
+        <section class="faq" id="faq">
+          <div class="section-head">
+            <p class="eyebrow reveal">FAQ</p>
+            <h2 class="reveal">Häufige Fragen</h2>
+          </div>
+          <div class="faq-list">
+            <details class="faq-item reveal">
+              <summary>Mein Kind hat noch nie Akrobatik gemacht – ist das ein Problem?</summary>
+              <div class="faq-answer"><p>Überhaupt nicht. Alle Kurse sind für Anfänger und Fortgeschrittene. Jedes Kind wird nach seinem eigenen Stand begleitet – wir fangen mit den Grundlagen an und steigern uns Schritt für Schritt.</p></div>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Welcher Kurs passt zu meinem Kind?</summary>
+              <div class="faq-answer"><p>Die Bambini Class ist für die Jüngeren, die Junior Class und die Airtrack Class für die Älteren. Die genauen Altersgruppen, Zeiten und Orte findest du bei den <a href="#kurse">Kursen</a>. Wenn du unsicher bist, schreib mir einfach – wir finden gemeinsam den passenden Kurs.</p></div>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Wie läuft das kostenlose Probetraining ab?</summary>
+              <div class="faq-answer"><p>Du fragst das Probetraining über das <a href="#kontakt">Kontaktformular</a>, per WhatsApp oder telefonisch an. Ich melde mich mit einem passenden Termin. Dein Kind trainiert ganz normal mit und ihr entscheidet danach in Ruhe, ob es weitergehen soll – ohne jede Verpflichtung.</p></div>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Was muss mein Kind mitbringen?</summary>
+              <div class="faq-answer"><p>Bequeme Sportkleidung und etwas zu trinken. Lange Haare bitte zusammenbinden und Schmuck vorher ablegen.</p><p>Zum ersten Training bitte die ausgefüllte <a href="assets/einverstaendniserklaerung.pdf" target="_blank" rel="noopener">Einverständniserklärung (PDF)</a> mitbringen.</p></div>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Dürfen Eltern beim Training zuschauen?</summary>
+              <div class="faq-answer"><p>Nein, während des Trainings können Eltern leider nicht zuschauen. So können sich die Kinder ganz auf das Training konzentrieren.</p></div>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Wie funktionieren die 5er- und 10er-Karten?</summary>
+              <div class="faq-answer"><p>Du kannst jedes Training einzeln bezahlen oder eine 5er- bzw. 10er-Karte nehmen. Mit der Karte wird das einzelne Training günstiger. Die Preise stehen bei den <a href="#kurse">Kursen</a>.</p></div>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Was ist der Unterschied zwischen Kurs und Personal Training?</summary>
+              <div class="faq-answer"><p>In den Kursen trainiert dein Kind in einer Gruppe zu festen Wochenterminen. Im <a href="#personal-training">Personal Training</a> trainieren wir eins zu eins, der Termin wird individuell abgesprochen und wir arbeiten gezielt an persönlichen Zielen wie Flick-Flack oder Salto. Das kostenlose Probetraining gilt für die Gruppenkurse.</p></div>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Was passiert, wenn ein Personal Training abgesagt werden muss?</summary>
+              <div class="faq-answer"><p>Bestätigte Termine können bis 24&nbsp;Stunden vor Trainingsbeginn kostenfrei abgesagt werden. Bei späterer Absage oder Nichterscheinen werden 50&nbsp;% des Preises berechnet.</p></div>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Gibt es Ferien oder Kurspausen?</summary>
+              <div class="faq-answer"><p>Ja, geplante Kurspausen kündige ich rechtzeitig hier auf der Website bei den <a href="#kurse">Kursen</a> an.</p></div>
+            </details>
+          </div>
+        </section>
+
         <!-- ===== CTA / KONTAKTFORMULAR ===== -->
         <section class="cta-band" id="kontakt">
           <p class="eyebrow reveal">Kontakt</p>
           <h2 class="reveal">Bereit für den ersten Schritt?</h2>
-          <p class="reveal">Das erste Training ist kostenlos und unverbindlich. Schreib mir oder ruf einfach an — wir finden gemeinsam den passenden Kurs.</p>
+          <p class="reveal">Das erste Training ist kostenlos und unverbindlich. Schreib mir, ruf an oder schick eine WhatsApp — wir finden gemeinsam den passenden Kurs.</p>
           <div class="cta-row reveal" style="justify-content:center;">
             <a class="btn btn-ghost" href="mailto:eltwisto.marco@gmail.com">eltwisto.marco@gmail.com</a>
             <a class="btn btn-ghost" href="tel:+4915161525298">0151 61525298</a>
+            <a class="btn btn-ghost" href="https://wa.me/4915161525298?text=Hallo%20Marco%2C%20ich%20habe%20eine%20Frage%20zur%20eltwistoacademy." target="_blank" rel="noopener">WhatsApp</a>
           </div>
 
           <form class="contact-form reveal" id="contactForm">
@@ -894,6 +990,7 @@
               <p>Wenn du das Kontaktformular nutzt, werden die von dir eingegebenen Daten — Name, E-Mail-Adresse und deine Nachricht — an mich übermittelt und ausschließlich zur Bearbeitung deiner Anfrage verwendet. Rechtsgrundlage sind deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) sowie die Anbahnung eines Vertragsverhältnisses (Art. 6 Abs. 1 lit. b DSGVO).</p>
               <p>Für die Übermittlung setze ich den Dienst SimplyForms ein, betrieben von Adam Todt, Drahy 1625, 696 42 Vracov, Tschechische Republik (IČO 19197438). Der Dienst nimmt deine Formulardaten entgegen und leitet sie mir per E-Mail weiter. Die Verarbeitung findet ausschließlich auf Servern innerhalb der Europäischen Union statt (Hetzner Online GmbH, Nürnberg). Die Inhalte deines Formulars werden dabei nicht in einer Datenbank gespeichert, sondern nach der Zustellung verworfen. Mit dem Anbieter besteht ein Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO.</p>
               <p>Du kannst mir stattdessen auch direkt per E-Mail oder telefonisch schreiben. In jedem Fall erreicht mich deine Nachricht als E-Mail. Diese wird bei meinem E-Mail-Anbieter Google Ireland Limited (Gmail) gespeichert und von mir ausschließlich zur Bearbeitung deiner Anfrage verarbeitet. Ich gebe diese Daten nicht ohne deine Einwilligung weiter und lösche sie, sobald sie nicht mehr benötigt werden.</p>
+              <p>Du kannst mir auch über WhatsApp schreiben. Der WhatsApp-Button auf dieser Website ist ein einfacher Link: Erst wenn du ihn antippst, wird WhatsApp geöffnet – vorher werden keine Daten an WhatsApp übertragen. Schreibst du mir über WhatsApp, werden deine Nachricht und deine Telefonnummer von der WhatsApp Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland, verarbeitet; dabei kann es auch zu einer Übermittlung an die Meta Platforms Inc. in den USA kommen. Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) bzw. die Anbahnung eines Vertragsverhältnisses (Art. 6 Abs. 1 lit. b DSGVO). Möchtest du das nicht, nutze bitte das Kontaktformular, E-Mail oder Telefon.</p>
               <p>Bist du unter 16 Jahre alt, schick deine Anfrage bitte über eine erziehungsberechtigte Person (Art. 8 DSGVO).</p>
 
               <h3>5. Cookies und Tracking</h3>
@@ -964,6 +1061,12 @@
         </footer>
 
   </div>
+
+  <!-- WhatsApp-Button: reiner Link, laedt nichts von WhatsApp vor dem Antippen -->
+  <a class="wa-float" href="https://wa.me/4915161525298?text=Hallo%20Marco%2C%20ich%20habe%20eine%20Frage%20zur%20eltwistoacademy." target="_blank" rel="noopener" aria-label="Per WhatsApp schreiben (öffnet WhatsApp)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.5A8.4 8.4 0 1 1 21 11.5z"/><path d="M9 9.5c.3 2 2 4 4.2 4.8l1-1 1.8.8-.3 1.4c-3.2.2-6.9-3.4-6.9-6.4l1.4-.3.8 1.8z" fill="currentColor" stroke="none"/></svg>
+    <span>WhatsApp</span>
+  </a>
 
 <script>
   // Alte Lesezeichen und Suchtreffer zeigen noch auf #einzeltraining —
